@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Kisan Agri-Suite & AI Chatbot</title>
+    <meta name="description" content="An advanced AI-powered assistant, crop diagnostic, and soil-matching automation system for smart agriculture.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Mobile Header -->
+    <header class="mobile-header">
+        <div class="logo-container" style="margin-bottom: 0;">
+            <div class="logo-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            </div>
+            <span class="logo-text">Smart Kisan</span>
+        </div>
+        <button class="menu-toggle-btn" id="menuToggleBtn">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+    </header>
+
+    <div class="app-container">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar" id="sidebar">
+            <div class="logo-container">
+                <div class="logo-icon">
+                    <!-- Sprout SVG -->
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 10 1 1c1.8 1.8 2.8 4.2 2.8 6.8v1.2H12m0-9a9 9 0 0 0-6 6v3h3a9 9 0 0 0 3-9M12 10V2"/></svg>
+                </div>
+                <span class="logo-text">Smart Kisan</span>
+            </div>
+            
+            <nav class="nav-links">
+                <li>
+                    <a class="nav-item active" data-tab="dashboard">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                        Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-item" data-tab="chatbot">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                        Kisan AI Chat
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-item" data-tab="analyzer">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                        Disease Analyzer
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-item" data-tab="planner">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                        Agri-Planner
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-item" data-tab="financials">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                        Mandi & Financials
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-item" data-tab="recommender">
+                        <!-- Lab flask representing chemical NPK test recommendations -->
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3h12M12 3v12M12 15a4 4 0 1 0 8 0H4a4 4 0 1 0 8 0z"/></svg>
+                        Soil Recommender
+                    </a>
+                </li>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <div class="avatar">K</div>
+                    <div class="user-info">
+                        <div class="name">Rajesh Kumar</div>
+                        <div class="role">Premium Farmer (Haryana)</div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            
+            <!-- Header Welcome Pill -->
+            <div class="header-bar">
+                <div class="welcome-msg">
+                    <h1>Namaste, Rajesh! 👋</h1>
+                    <p>Welcome back to your digital farm assistant dashboard.</p>
+                </div>
+                <div class="date-weather-pill">
+                    <span id="liveDate">Tuesday, 30 June 2026</span>
+                    <div class="weather-brief">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                        <span>32°C (Sunny)</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================= DASHBOARD TAB ================= -->
+            <div class="tab-content active" id="dashboard">
+                <!-- Hero Banner Card -->
+                <div class="kisan-hero-banner">
+                    <div class="banner-text">
+                        <h2>Soil Intelligence & AI Automation</h2>
+                        <p>Analyze physical soil chemistries, scan crop disease patterns, schedule field irrigations, and calculate yield profits to optimize output and save costs.</p>
+                        <div class="cta-group">
+                            <button class="btn-primary" onclick="switchTab('chatbot')">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                                Ask Kisan AI
+                            </button>
+                            <button class="btn-secondary" onclick="switchTab('recommender')">Match Soil Chemistry</button>
+                        </div>
+                    </div>
+                    <div class="banner-visual">
+                        <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m12 10 1 1c1.8 1.8 2.8 4.2 2.8 6.8v1.2H12m0-9a9 9 0 0 0-6 6v3h3a9 9 0 0 0 3-9M12 10V2"/></svg>
+                    </div>
+                </div>
+
+                <!-- Stats Grid & Dynamic Alerts -->
+                <div class="dashboard-grid">
+                    <div class="dashboard-left">
+                        <!-- Stats Row -->
+                        <div class="stats-row">
+                            <div class="glass-card stat-card">
+                                <div class="stat-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                                </div>
+                                <div class="stat-info">
+                                    <div class="label">Crop Cycle Progress</div>
+                                    <div class="value" id="dashCropCycle">No Active Cycle</div>
+                                </div>
+                            </div>
+                            <div class="glass-card stat-card">
+                                <div class="stat-icon warning">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                                </div>
+                                <div class="stat-info">
+                                    <div class="label">Mandi Average Price</div>
+                                    <div class="value" id="dashMandiAvg">Wheat: ₹2,350/Q</div>
+                                </div>
+                            </div>
+                            <div class="glass-card stat-card">
+                                <div class="stat-icon danger">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                                </div>
+                                <div class="stat-info">
+                                    <div class="label">Active Crop Alerts</div>
+                                    <div class="value" id="dashAlertCount">2 Active</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Agri alerts -->
+                        <div class="glass-card">
+                            <h3 class="section-title">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                                Farm Alerts & Notifications
+                            </h3>
+                            <div class="alerts-list" id="dashboardAlertsList">
+                                <div class="alert-item alert-warning">
+                                    <div class="alert-icon">⚠️</div>
+                                    <div class="alert-body">
+                                        <h4>Pest Warning (Haryana Region)</h4>
+                                        <p>Reports of Pink Bollworm attacks in nearby cotton fields. Monitor leaves closely and apply neem oil preventatively.</p>
+                                        <div class="alert-time">4 hours ago</div>
+                                    </div>
+                                </div>
+                                <div class="alert-item alert-danger">
+                                    <div class="alert-icon">🌧️</div>
+                                    <div class="alert-body">
+                                        <h4>Heavy Rainfall Pre-Alert</h4>
+                                        <p>Moderate to heavy rainfall (35mm) forecast in Haryana within 48 hours. Ensure crop fields have adequate drainage and postpone urea spraying.</p>
+                                        <div class="alert-time">1 day ago</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Weather Sidecard -->
+                    <div class="dashboard-right">
+                        <div class="glass-card weather-details-card">
+                            <div class="weather-today">
+                                <span class="weather-large-icon">☀️</span>
+                                <div class="temp-large">32°C</div>
+                                <div class="weather-condition">Partly Cloudy</div>
+                                <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem;">Rohtak, Haryana</p>
+                            </div>
+                            <div class="weather-extra-grid">
+                                <div class="weather-extra-item">
+                                    💧 Humidity: &nbsp;<span>62%</span>
+                                </div>
+                                <div class="weather-extra-item">
+                                    💨 Wind: &nbsp;<span>14 km/h</span>
+                                </div>
+                                <div class="weather-extra-item">
+                                    ☂️ Rain Chance: &nbsp;<span>15%</span>
+                                </div>
+                                <div class="weather-extra-item">
+                                    📉 Air Quality: &nbsp;<span>72 (Mod)</span>
+                                </div>
+                            </div>
+                            <h4 style="font-size: 0.9rem; margin-bottom: 0.75rem; font-weight: 600;">5-Day Forecast</h4>
+                            <div class="forecast-days">
+                                <div class="forecast-day">
+                                    <span class="day">Wed</span>
+                                    <span class="icon">☀️</span>
+                                    <span class="temp">33° / 24°</span>
+                                </div>
+                                <div class="forecast-day">
+                                    <span class="day">Thu</span>
+                                    <span class="icon">⛈️</span>
+                                    <span class="temp">29° / 22°</span>
+                                </div>
+                                <div class="forecast-day">
+                                    <span class="day">Fri</span>
+                                    <span class="icon">🌧️</span>
+                                    <span class="temp">27° / 21°</span>
+                                </div>
+                                <div class="forecast-day">
+                                    <span class="day">Sat</span>
+                                    <span class="icon">⛅</span>
+                                    <span class="temp">30° / 23°</span>
+                                </div>
+                                <div class="forecast-day">
+                                    <span class="day">Sun</span>
+                                    <span class="icon">☀️</span>
+                                    <span class="temp">32° / 25°</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================= KISAN AI CHATBOT TAB ================= -->
+            <div class="tab-content" id="chatbot">
+                <div class="chatbot-layout">
+                    <div class="glass-card chat-panel">
+                        <div class="chat-header">
+                            <div class="chat-status">
+                                <span class="status-dot"></span>
+                                <strong>Kisan AI Assistant</strong>
+                                <span style="font-size: 0.8rem; color: var(--text-muted);">(Active & Listening)</span>
+                            </div>
+                            <div class="chat-controls">
+                                <div class="toggle-pill">
+                                    <button class="toggle-btn active" id="langEng">English</button>
+                                    <button class="toggle-btn" id="langHindi">हिंदी</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="messages-box" id="chatMessages">
+                            <div class="message system">
+                                Welcome to Kisan AI. Ask me about crop planting, pest/disease diagnosis, soil improvement, or recommended crops based on soil tests.
+                            </div>
+                            <div class="message">
+                                <div class="message-avatar">AI</div>
+                                <div class="message-bubble">
+                                    Namaste Rajesh! 🙏 How can I assist you with your farming today? Feel free to ask a question or select a suggestion below.
+                                    <span class="message-time">17:30</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="input-panel">
+                            <div class="quick-replies" id="quickRepliesBox">
+                                <button class="quick-reply-pill" onclick="sendQuickMessage('Best fertilizer for growing potatoes?')">Potato Fertilizer</button>
+                                <button class="quick-reply-pill" onclick="sendQuickMessage('What crops are good for clayey soil with pH 7.5?')">Clayey Soil Crops</button>
+                                <button class="quick-reply-pill" onclick="sendQuickMessage('Tomato leaves are turning yellow with black spots. Remedial measures?')">Tomato Yellow Spots</button>
+                                <button class="quick-reply-pill" onclick="sendQuickMessage('What is the ideal soil pH for sugarcane cultivation?')">Sugarcane Soil pH</button>
+                            </div>
+                            <div class="input-container">
+                                <textarea class="chat-textarea" id="chatInput" placeholder="Type your query here or click mic to speak..."></textarea>
+                                
+                                <!-- Voice Wave Indicator -->
+                                <div class="voice-wave-container" id="voiceWaveIndicator">
+                                    <div class="wave-bar"></div>
+                                    <div class="wave-bar"></div>
+                                    <div class="wave-bar"></div>
+                                    <div class="wave-bar"></div>
+                                    <div class="wave-bar"></div>
+                                </div>
+
+                                <button class="action-icon-btn" id="voiceBtn" title="Speak Query">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+                                </button>
+                                <button class="action-icon-btn" id="speakResponseToggle" title="Voice Output Toggle" style="color: var(--primary-light);">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+                                </button>
+                                <button class="btn-primary" style="padding: 0.5rem 1rem;" id="sendBtn">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Sidecard - Tips and AgroExpert -->
+                    <div class="chat-tips-panel">
+                        <div class="glass-card">
+                            <h3 class="tips-header">Quick AI Features</h3>
+                            <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1rem; line-height: 1.4;">Select a smart automation task or workflow to trigger immediately.</p>
+                            <button class="quick-contact-btn" style="margin-bottom: 0.75rem; text-align: left; padding: 0.75rem;" onclick="switchTab('analyzer')">📸 Diagnostics Scanner</button>
+                            <button class="quick-contact-btn" style="margin-bottom: 0.75rem; text-align: left; padding: 0.75rem;" onclick="switchTab('planner')">📅 Generate Crop Calendar</button>
+                            <button class="quick-contact-btn" style="text-align: left; padding: 0.75rem;" onclick="switchTab('recommender')">🧪 Soil Crop Matching</button>
+                        </div>
+                        <div class="glass-card expert-card">
+                            <div class="expert-title">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                                Agro-Expert Assist
+                            </div>
+                            <p>Can't resolve your problem with AI? Open an automated support workflow ticket with your local agricultural officer.</p>
+                            <button class="quick-contact-btn" id="openExpertTicketBtn">Open Expert Ticket</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================= CROP DISEASE ANALYZER TAB ================= -->
+            <div class="tab-content" id="analyzer">
+                <div class="analyzer-layout">
+                    <!-- Left: Upload & Scanning area -->
+                    <div class="glass-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+                        <div>
+                            <h3 class="section-title">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                                Instant Leaf Disease Scan
+                            </h3>
+                            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem;">Upload a close-up photo of the affected crop leaf to diagnose diseases and receive immediate chemical & biological treatment schedules.</p>
+                        </div>
+
+                        <!-- Drag and Drop Zone -->
+                        <div class="upload-card" id="dragDropCard">
+                            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                            <div class="upload-text">
+                                <h3>Drag & Drop Image</h3>
+                                <p>Supports JPG, PNG formats up to 5MB</p>
+                                <button class="btn-primary" style="margin: 0 auto 1rem;" onclick="document.getElementById('leafFileInput').click()">Browse Files</button>
+                                <input type="file" id="leafFileInput" style="display: none;" accept="image/*">
+                            </div>
+                            
+                            <!-- Scanner Animation Overlay (Triggers on simulated scan) -->
+                            <div class="scanner-container" id="scannerOverlay">
+                                <div class="scan-image-preview" id="scanPreview" style="background-image: url('');">
+                                    <div class="scan-line"></div>
+                                </div>
+                                <div class="scanner-status-text" id="scanStatusText">AI Scanning Leaf Tissue...</div>
+                                <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.5rem;">Analyzing leaf patterns and chlorosis</p>
+                            </div>
+                        </div>
+
+                        <div class="sample-disease-grid">
+                            <span class="sample-grid-label">Or test with a sample disease crop:</span>
+                            <div class="sample-leaf-cards">
+                                <button class="sample-leaf-btn" onclick="runSampleScan('Tomato_Early_Blight', '🍅 Tomato Leaf Blight')">
+                                    <span>🍅</span> Early Blight
+                                </button>
+                                <button class="sample-leaf-btn" onclick="runSampleScan('Wheat_Rust', '🌾 Wheat Leaf Rust')">
+                                    <span>🌾</span> Rust Disease
+                                </button>
+                                <button class="sample-leaf-btn" onclick="runSampleScan('Cotton_Curl', '🌿 Cotton Curl Leaf')">
+                                    <span>🌿</span> Curl Virus
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Diagnostic Output Report -->
+                    <div class="glass-card report-panel">
+                        <!-- Placeholder -->
+                        <div class="report-placeholder" id="reportPlaceholder">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                            <h3>Diagnostic Report Awaiting Scan</h3>
+                            <p>Upload a leaf image or choose a demo sample above. The intelligent vision AI will generate a prescription report here.</p>
+                        </div>
+
+                        <!-- Diagnostic report content -->
+                        <div class="diagnostic-report" id="diagnosticReport">
+                            <div class="report-header">
+                                <div>
+                                    <h3 id="repDiseaseName">Tomato Early Blight</h3>
+                                    <p style="font-size: 0.8rem; color: var(--text-muted);" id="repCropType">Host Crop: Tomato (Solanum lycopersicum)</p>
+                                </div>
+                                <span class="confidence-pill" id="repConfidence">94% Match</span>
+                            </div>
+
+                            <div>
+                                <div class="report-section-label">Observed Symptoms</div>
+                                <p style="font-size: 0.85rem; line-height: 1.5;" id="repSymptoms">Dark circular spots with concentric rings ('target board' appearance) starting on older lower leaves. Surrounding tissue is chlorotic (yellowing).</p>
+                            </div>
+
+                            <div>
+                                <div class="report-section-label">Organic/Biological Treatment</div>
+                                <p style="font-size: 0.85rem; line-height: 1.5;" id="repBioTreatment">Spray liquid copper fungicide or Bacillus subtilis formulations early morning. Prune the lower infected leaves to improve air circulation.</p>
+                                <div class="treatment-badges">
+                                    <span class="treatment-badge organic">Eco-Friendly</span>
+                                    <span class="treatment-badge organic">Bacillus formulation</span>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="report-section-label">Chemical Treatment (Emergency)</div>
+                                <p style="font-size: 0.85rem; line-height: 1.5;" id="repChemTreatment">Apply Chlorothalonil or Mancozeb fungicide at 2g per liter water. Repeat spray after 10 days if rain persists.</p>
+                                <div class="treatment-badges">
+                                    <span class="treatment-badge chemical">Class II Fungicide</span>
+                                    <span class="treatment-badge chemical">Chlorothalonil</span>
+                                </div>
+                            </div>
+
+                            <div style="border-top: 1px solid var(--border-light); padding-top: 1rem;">
+                                <div class="report-section-label" style="color: var(--primary-light);">Prevention Strategy</div>
+                                <ul style="font-size: 0.8rem; line-height: 1.5; color: var(--text-muted); margin-left: 1.25rem;" id="repPrevention">
+                                    <li>Implement 3-year crop rotation (avoid nightshade family).</li>
+                                    <li>Use drip irrigation to prevent leaves from remaining wet.</li>
+                                    <li>Apply balanced potassium fertilizers to increase resistance.</li>
+                                </ul>
+                            </div>
+                            
+                            <button class="btn-primary" style="margin-top: 1rem; width: 100%; justify-content: center;" onclick="sendReportToChat()">
+                                💬 Send Treatment Plan to Chatbot
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================= AGRI PLANNER TAB ================= -->
+            <div class="tab-content" id="planner">
+                <div class="planner-layout">
+                    <!-- Left Settings Panel -->
+                    <div class="glass-card planner-form-panel">
+                        <h3 class="section-title">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                            Agri Workflow Planner
+                        </h3>
+                        <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.5rem; line-height: 1.4;">Automate your entire cultivation calendar. Enter sowing details to map out staging, irrigation timings, fertilizer schedules, and alerts.</p>
+                        
+                        <div class="form-group">
+                            <label for="planCropSelect">Target Crop</label>
+                            <select id="planCropSelect" class="form-input">
+                                <option value="Wheat">🌾 Wheat (Rabi)</option>
+                                <option value="Rice">🍚 Rice (Kharif)</option>
+                                <option value="Cotton">🌿 Cotton (Cash Crop)</option>
+                                <option value="Tomato">🍅 Tomato (Horticulture)</option>
+                                <option value="Sugarcane">🎋 Sugarcane (Perennial)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="planSoilSelect">Soil Type</label>
+                            <select id="planSoilSelect" class="form-input">
+                                <option value="Loamy">Loamy Soil (Highly fertile)</option>
+                                <option value="Sandy">Sandy Soil (High drainage)</option>
+                                <option value="Clayey">Clayey Soil (High moisture retention)</option>
+                                <option value="Black">Black Soil (Regur / Cotton soil)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="planSowingDate">Sowing Date</label>
+                            <input type="date" id="planSowingDate" class="form-input" value="2026-06-15">
+                        </div>
+
+                        <button class="btn-primary" style="margin-top: 1rem; width: 100%; justify-content: center;" id="generatePlannerBtn">
+                            📅 Build Cultivation Schedule
+                        </button>
+                    </div>
+
+                    <!-- Right Calendar / Workflow Output -->
+                    <div class="glass-card planner-results-panel">
+                        <!-- Placeholder -->
+                        <div class="planner-placeholder" id="plannerPlaceholder">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+                            <h3>Custom Farm Schedule Awaiting Input</h3>
+                            <p>Generate a cultivation workflow timeline and task list customized to your specific sowing date and regional soil parameters.</p>
+                        </div>
+
+                        <!-- Cultivation Stage List -->
+                        <div class="timeline-container" id="plannerTimelineContainer">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <h3 id="plannerActiveCropTitle" style="font-family: var(--font-heading); font-size: 1.3rem;">Wheat Cultivation Calendar</h3>
+                                    <span style="font-size: 0.8rem; color: var(--text-muted);" id="plannerDurationLabel">Total Duration: 120 Days</span>
+                                </div>
+                                <span class="confidence-pill" style="background: rgba(46,125,50,0.08); border-color: var(--primary-light); color: var(--primary-light);" id="plannerProgressPercentLabel">0% Done</span>
+                            </div>
+
+                            <!-- Progress bar -->
+                            <div class="timeline-progress-bar">
+                                <div class="timeline-progress-fill" id="plannerProgressFill"></div>
+                            </div>
+
+                            <!-- Stages Cards -->
+                            <div class="stage-cards" id="plannerStagesList">
+                                <!-- Dynamically generated stage cards will populate here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================= MANDI & FINANCIALS TAB ================= -->
+            <div class="tab-content" id="financials">
+                <div class="financial-layout">
+                    <!-- Left: Mandi Prices Tracker -->
+                    <div class="glass-card">
+                        <h3 class="section-title">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                            Mandi Yard Live Market Rates
+                        </h3>
+                        <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.4;">Compare real-time crop pricing lists and historical trends across regional markets (Mandi yards) to optimize sale timings.</p>
+                        
+                        <!-- Mandi Selection Filters -->
+                        <div class="mandi-search-row">
+                            <select id="mandiStateSelect" class="form-input">
+                                <option value="Haryana">Haryana</option>
+                                <option value="Punjab">Punjab</option>
+                                <option value="Rajasthan">Rajasthan</option>
+                                <option value="UttarPradesh">Uttar Pradesh</option>
+                            </select>
+                            <select id="mandiYardSelect" class="form-input">
+                                <option value="Rohtak">Rohtak Mandi</option>
+                                <option value="Karnal">Karnal Mandi</option>
+                                <option value="Sirsa">Sirsa Mandi</option>
+                            </select>
+                            <select id="mandiCropSelect" class="form-input">
+                                <option value="Wheat">Wheat (Kanak)</option>
+                                <option value="Paddy">Paddy (Basmati)</option>
+                                <option value="Cotton">Cotton (Kapas)</option>
+                                <option value="Mustard">Mustard (Sarso)</option>
+                            </select>
+                            <button class="btn-primary" id="mandiSearchBtn" style="padding: 0 1rem; border-radius: 12px; height: 42px;">Search</button>
+                        </div>
+
+                        <!-- Current Mandi prices dashboard -->
+                        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-top: 1.5rem;">
+                            <div style="background: rgba(0,0,0,0.015); padding: 0.75rem 1rem; border-radius: 10px; border-left: 3px solid var(--danger);">
+                                <span style="font-size: 0.7rem; color: var(--text-muted); display: block; margin-bottom: 0.25rem;">Minimum Price</span>
+                                <span style="font-family: var(--font-heading); font-size: 1.15rem; font-weight: 700;" id="mandiMinVal">₹2,210/Q</span>
+                            </div>
+                            <div style="background: rgba(0,0,0,0.015); padding: 0.75rem 1rem; border-radius: 10px; border-left: 3px solid var(--primary-light);">
+                                <span style="font-size: 0.7rem; color: var(--text-muted); display: block; margin-bottom: 0.25rem;">Modal (Avg) Price</span>
+                                <span style="font-family: var(--font-heading); font-size: 1.15rem; font-weight: 700;" id="mandiAvgVal">₹2,350/Q</span>
+                            </div>
+                            <div style="background: rgba(0,0,0,0.015); padding: 0.75rem 1rem; border-radius: 10px; border-left: 3px solid var(--success);">
+                                <span style="font-size: 0.7rem; color: var(--text-muted); display: block; margin-bottom: 0.25rem;">Peak Price</span>
+                                <span style="font-family: var(--font-heading); font-size: 1.15rem; font-weight: 700;" id="mandiMaxVal">₹2,490/Q</span>
+                            </div>
+                        </div>
+
+                        <!-- Dynamic SVG graph placeholder -->
+                        <h4 style="font-size: 0.85rem; margin-top: 2rem; font-weight: 600;">Historical Trend (Last 6 Months Modal Price)</h4>
+                        <div class="chart-container">
+                            <svg class="chart-svg" id="mandiChartSvg" viewBox="0 0 400 200">
+                                <!-- Lines and Grid populated dynamically by app.js -->
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Right: Agri Calculator -->
+                    <div class="glass-card calculator-panel">
+                        <h3 class="section-title">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><line x1="9" y1="22" x2="15" y2="22"/><line x1="8" y1="6" x2="16" height="6"/><line x1="16" y1="14" x2="16" y2="18"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/><path d="M12 14h.01"/><path d="M8 14h.01"/><path d="M12 18h.01"/><path d="M8 18h.01"/></svg>
+                            Agri Yield & Profit Calculator
+                        </h3>
+                        <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1rem; line-height: 1.4;">Project farm expenditure, gross crop yield in quintals, expected revenues, and net ROI based on farm boundaries.</p>
+
+                        <div class="calc-grid">
+                            <div class="form-group">
+                                <label for="calcLandSize">Land Area (Acres)</label>
+                                <input type="number" id="calcLandSize" class="form-input" value="5" min="1">
+                            </div>
+                            <div class="form-group">
+                                <label for="calcCropSelect">Crop Type</label>
+                                <select id="calcCropSelect" class="form-input">
+                                    <option value="Wheat">Wheat</option>
+                                    <option value="Rice">Rice</option>
+                                    <option value="Cotton">Cotton</option>
+                                    <option value="Tomato">Tomato</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="calcCostInputs">Est. Costs (Seeds+Fertilizers) per Acre</label>
+                                <input type="number" id="calcCostInputs" class="form-input" value="8000">
+                            </div>
+                            <div class="form-group">
+                                <label for="calcLaborCosts">Est. Labor & Machining per Acre</label>
+                                <input type="number" id="calcLaborCosts" class="form-input" value="6000">
+                            </div>
+                        </div>
+
+                        <div class="calc-results">
+                            <div class="calc-result-row">
+                                <span class="label">Total Cultivation Expense</span>
+                                <span class="value" id="calcTotalExpense">₹70,000</span>
+                            </div>
+                            <div class="calc-result-row">
+                                <span class="label">Expected Yield Output</span>
+                                <span class="value" id="calcExpectedYield">90 Quintals</span>
+                            </div>
+                            <div class="calc-result-row">
+                                <span class="label">Gross Market Revenue</span>
+                                <span class="value" id="calcGrossRevenue">₹2,11,500</span>
+                            </div>
+                            <div class="calc-result-row profit">
+                                <span class="label">Net Projected Profit</span>
+                                <span class="value" id="calcNetProfit">₹1,41,500</span>
+                            </div>
+                            <div class="calc-result-row roi">
+                                <span class="label">Estimated Return on Investment (ROI)</span>
+                                <span class="value" id="calcROI">202.1%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================= SOIL CROP RECOMMENDER TAB (NEW AI FEATURE) ================= -->
+            <div class="tab-content" id="recommender">
+                <div class="recommender-layout">
+                    <!-- Left Inputs Form -->
+                    <div class="glass-card planner-form-panel">
+                        <h3 class="section-title">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3h12M12 3v12M12 15a4 4 0 1 0 8 0H4a4 4 0 1 0 8 0z"/></svg>
+                            Soil Chemistry Analyzer
+                        </h3>
+                        <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1rem; line-height: 1.4;">Input soil macro-nutrients (NPK chemistry) and acidity parameters from your soil testing card to calculate matching high-yield crops.</p>
+
+                        <div class="form-group">
+                            <div style="display:flex; justify-content:space-between;">
+                                <label for="soilN">Nitrogen (N) - mg/kg</label>
+                                <span id="soilNVal" style="font-weight:600; font-size:0.85rem;">70</span>
+                            </div>
+                            <input type="range" id="soilN" min="10" max="140" value="70" class="form-input" style="padding:0; height:8px;" oninput="document.getElementById('soilNVal').innerText=this.value">
+                        </div>
+
+                        <div class="form-group">
+                            <div style="display:flex; justify-content:space-between;">
+                                <label for="soilP">Phosphorus (P) - mg/kg</label>
+                                <span id="soilPVal" style="font-weight:600; font-size:0.85rem;">45</span>
+                            </div>
+                            <input type="range" id="soilP" min="5" max="100" value="45" class="form-input" style="padding:0; height:8px;" oninput="document.getElementById('soilPVal').innerText=this.value">
+                        </div>
+
+                        <div class="form-group">
+                            <div style="display:flex; justify-content:space-between;">
+                                <label for="soilK">Potassium (K) - mg/kg</label>
+                                <span id="soilKVal" style="font-weight:600; font-size:0.85rem;">120</span>
+                            </div>
+                            <input type="range" id="soilK" min="10" max="250" value="120" class="form-input" style="padding:0; height:8px;" oninput="document.getElementById('soilKVal').innerText=this.value">
+                        </div>
+
+                        <div class="form-group">
+                            <div style="display:flex; justify-content:space-between;">
+                                <label for="soilPH">Soil pH Level</label>
+                                <span id="soilPHVal" style="font-weight:600; font-size:0.85rem;">6.8</span>
+                            </div>
+                            <input type="range" id="soilPH" min="4.0" max="9.0" step="0.1" value="6.8" class="form-input" style="padding:0; height:8px;" oninput="document.getElementById('soilPHVal').innerText=this.value">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="soilRainfall">Avg Annual Rainfall (mm)</label>
+                            <input type="number" id="soilRainfall" class="form-input" value="800" min="100" max="3000">
+                        </div>
+
+                        <button class="btn-primary" style="margin-top: 1rem; width: 100%; justify-content: center;" id="recommendCropsBtn">
+                            🧪 Run Crop Matcher
+                        </button>
+                    </div>
+
+                    <!-- Right Recommender Outputs -->
+                    <div class="glass-card recommender-results">
+                        <!-- Placeholder -->
+                        <div class="recommender-placeholder" id="recommenderPlaceholder">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                            <h3>Crop Matcher Awaiting Analysis</h3>
+                            <p>Adjust soil chemical levels on the left and trigger the matching engine. Recommended soil crop profiles will be calculated instantly.</p>
+                        </div>
+
+                        <!-- Recommendations List -->
+                        <div class="recommendations-container" id="recommendationsListContainer">
+                            <h3 style="font-family: var(--font-heading); font-size: 1.3rem;">Matched High-Yield Crop Profiles</h3>
+                            <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:0.5rem;" id="recommenderConfigSummary">Based on soil chemistry profile</p>
+                            
+                            <div class="recommender-grid" id="recommenderResultsList">
+                                <!-- Populated dynamically by app.js -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Alert Modal / Agro-Expert Dialog -->
+    <div id="expertModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.4); z-index:999; align-items:center; justify-content:center; backdrop-filter: blur(4px);">
+        <div class="glass-card" style="width: 90%; max-width: 500px; padding: 2rem; border-color: var(--primary-light); box-shadow: 0 20px 50px rgba(0,0,0,0.1);">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem;">
+                <h3 style="font-family: var(--font-heading); font-size:1.3rem;">Agro-Expert Support Ticket</h3>
+                <button onclick="document.getElementById('expertModal').style.display='none'" style="background:transparent; border:none; color:var(--text-primary); cursor:pointer;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+            <form id="expertTicketForm">
+                <div class="form-group" style="margin-bottom:1rem;">
+                    <label>Query Subject</label>
+                    <input type="text" id="expertSubject" class="form-input" value="Soil NPK test query" required>
+                </div>
+                <div class="form-group" style="margin-bottom:1.25rem;">
+                    <label>Detailed Description</label>
+                    <textarea id="expertDesc" class="form-input" style="height:100px; resize:none;" required>Dear Expert, I've entered my NPK testing card scores. Seeking physical crop matching audit details for my 5-acre field in Haryana.</textarea>
+                </div>
+                <div style="display:flex; justify-content:flex-end; gap:0.75rem;">
+                    <button type="button" class="btn-secondary" onclick="document.getElementById('expertModal').style.display='none'">Cancel</button>
+                    <button type="submit" class="btn-primary">Submit Ticket</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
